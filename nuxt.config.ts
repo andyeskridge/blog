@@ -82,15 +82,14 @@ export default defineNuxtConfig({
     },
   },
 
-  experimental: {
-    inlineSSRStyles: false,
-  },
-
   typescript: {
     includeWorkspace: true,
   },
 
   nitro: {
+    experimental: {
+      openAPI: true,
+    },
     prerender: {
       ignore: [
         "/__pinceau_tokens_config.json",
