@@ -30,7 +30,12 @@ export default defineNuxtConfig({
   },
 
   pages: true,
-  modules: [envModules.tokens, envModules.studio, "@nuxt/content"],
+  modules: [
+    envModules.tokens,
+    envModules.studio,
+    "@nuxt/content",
+    "@nuxthub/core",
+  ],
 
   components: [
     { path: resolve("./components"), global: true },
@@ -98,5 +103,9 @@ export default defineNuxtConfig({
     timeline: {
       enabled: true,
     },
+  },
+
+  hub: {
+    cache: true,
   },
 });
