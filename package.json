@@ -29,7 +29,7 @@
     "@nuxt-themes/typography": "^1.0.1",
     "@nuxt/content": "^2.12.1",
     "@nuxthq/studio": "^1.1.2",
-    "@vueuse/core": "^10.10.0",
+    "@vueuse/core": "^10.10.1",
     "pinceau": "0.20.1",
     "ufo": "^1.5.3"
   }
