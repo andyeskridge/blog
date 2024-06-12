@@ -93,6 +93,8 @@ export default defineNuxtConfig({
     timeline: {
       enabled: true,
     },
+
+    enabled: true,
   },
 
   hub: {
