@@ -16,11 +16,11 @@
     "@nuxthub/core": "^0.6.15",
     "@nuxtjs/plausible": "^1.0.0",
     "@types/node": "^20.14.2",
-    "eslint": "^9.4.0",
+    "eslint": "^9.5.0",
     "nuxt": "^3.12.1",
     "typescript": "^5.4.5",
     "vite-plugin-inspect": "^0.8.4",
-    "vue": "^3.4.28",
+    "vue": "^3.4.29",
     "wrangler": "^3.60.3"
   },
   "dependencies": {
