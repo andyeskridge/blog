@@ -14,58 +14,12 @@ const articles = computed(() => _articles.value || [])
 </script>
 
 <template>
-  <div v-if="articles?.length" class="articles-list">
-    <div class="featured">
+  <div v-if="articles?.length" class="sm:px-12 md:px-0">
+    <div class="my-12 md:my-8">
       <ArticlesListItem :article="articles[0]" :featured="true" />
     </div>
-    <div class="layout">
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
       <ArticlesListItem v-for="(article, index) in articles.slice(1)" :key="index" :article="article" />
     </div>
   </div>
-  <div v-else class="tour">
-    <p>Seems like there are no articles yet.</p>
-    <p>
-      You can start by
-      <!-- eslint-disable-next-line -->
-      <ProseA href="https://alpine.nuxt.space/articles/write-articles">creating</ProseA> one in the <ProseCodeInline>articles</ProseCodeInline> folder.
-    </p>
-  </div>
 </template>
-
-<style scoped lang="ts">
-css({
-  '.articles-list': {
-    '@sm': {
-      px: '{space.12}',
-    },
-    '@md': {
-      px: 0,
-    },
-    '.featured': {
-      my: '{space.12}',
-      '@md': {
-        my: '{space.8}',
-      }
-    },
-    '.layout': {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
-      gap: '{space.12}',
-      '@md': {
-        gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-        gap: '{space.8}',
-      },
-      '@lg': {
-        gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
-      },
-    }
-  },
-  '.tour': {
-    minHeight: '30vh',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-})
-</style>

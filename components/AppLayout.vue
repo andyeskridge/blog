@@ -1,36 +1,20 @@
 <script setup lang="ts">
-const alpine = useAppConfig().alpine
-
-defineProps({
-  padded: {
-    type: Boolean,
-    default: true,
-  },
-})
-
-useHead({
-  meta: [
-    { name: 'twitter:card', content: 'summary_large_image' },
-  ],
-})
-
-// @ts-ignore
-useContentHead(alpine as any)
+const { cover } = useAppConfig()
 </script>
 
 <template>
-  <Container class="app-layout">
-    <AppLoadingBar />
-    <AppHeader v-if="alpine.header" />
+  <div class="sm:pt-6 sm:pb-10">
+    <Html lang="en" />
+    <Meta property="og:image" :content="cover" />
+    <Meta name="twitter:card" content="summary_large_image" />
+    <NuxtLoadingIndicator />
+    <AppNavbar />
     <slot />
-    <AppFooter v-if="alpine.footer" />
-  </Container>
+  </div>
 </template>
 
-<style lang="ts" scoped>
-css({
-  '.app-layout': {
-    minWidth: '{size.xs}'
-  }
-})
+<style lang="postcss">
+body {
+  @apply bg-gray-50 text-black dark:bg-gray-900 dark:text-white;
+}
 </style>

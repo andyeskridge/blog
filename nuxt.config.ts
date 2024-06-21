@@ -1,99 +1,39 @@
-import { createResolver } from '@nuxt/kit'
-
-const { resolve } = createResolver(import.meta.url)
-
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
+// https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
-  app: {
-    head: {
-      htmlAttrs: {
-        lang: 'en',
-      },
-    },
-  },
-
-  extends: ['@nuxt-themes/typography', '@nuxt-themes/elements'],
-
-  runtimeConfig: {
-    public: {
-      FORMSPREE_URL: process.env.FORMSPREE_URL,
-    },
-  },
-
-  pages: true,
   modules: [
-    '@nuxt-themes/tokens',
-    '@nuxthq/studio',
     '@nuxt/content',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/color-mode',
+    'nuxt-icon',
+    '@nuxthq/studio',
     '@nuxthub/core',
+    '@nuxt/image',
   ],
-
-  components: [
-    { path: resolve('./components'), global: true },
-    { path: resolve('./components/content'), global: true },
-    { path: resolve('./components/data-entry'), global: true },
-  ],
-
-  css: [resolve('./assets/main.css')],
-
+  // https://color-mode.nuxtjs.org
   colorMode: {
     classSuffix: '',
   },
-
-  pinceau: {
-    studio: true,
-  },
-
+  // https://content.nuxtjs.org
   content: {
     documentDriven: true,
-    navigation: {
-      fields: ['navTitle'],
-    },
     highlight: {
+      // See the available themes on https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
       theme: {
-        default: 'github-light',
         dark: 'github-dark',
+        default: 'github-light',
       },
-      preload: [
-        'json',
-        'js',
-        'ts',
-        'html',
-        'css',
-        'vue',
-        'diff',
-        'shell',
-        'markdown',
-        'yaml',
-        'bash',
-        'ini',
-        'c',
-        'cpp',
-      ],
     },
-  },
 
-  typescript: {
-    includeWorkspace: true,
   },
-
   nitro: {
     experimental: {
       openAPI: true,
     },
-    prerender: {
-      ignore: [
-        '/__pinceau_tokens_config.json',
-        '/__pinceau_tokens_schema.json',
-      ],
-    },
   },
-
   devtools: {
     timeline: {
       enabled: true,
     },
-
     enabled: true,
   },
 

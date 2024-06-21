@@ -34,14 +34,16 @@ const id = computed(() => {
 <template>
   <article
     v-if="article._path && article.title"
-    :class="{ featured: featured }"
+    class="flex flex-col gap-4 "
+    :class="{ 'featured': featured, '@md:flex-row': featured, 'gap-8': featured }"
     :data-content-id="id"
   >
-    <div v-if="article.cover" class="image">
-      <div v-if="article?.badges">
+    <div v-if="article.cover" class="flex">
+      <div v-if="article?.badges" class="absolute flex flex-wrap gap-2 mt-2 ml-2">
         <span
           v-for="(badge, index) in article.badges"
           :key="index"
+          class="p-1 rounded-sm text-xs font-bold"
           :style="{
             backgroundColor: badge?.bg || 'rgba(0, 0, 0, 0.3)',
             color: badge?.color || 'white',
@@ -52,99 +54,30 @@ const id = computed(() => {
       </div>
       <NuxtLink :to="article._path">
         <NuxtImg
+          class="rounded-md w-full aspect-video object-cover"
           :src="article.cover"
           :alt="article.title"
-          width="16"
-          height="9"
         />
       </NuxtLink>
     </div>
 
-    <div class="content">
+    <div class="flex flex-col flex-1">
       <NuxtLink
         :to="article._path"
-        class="headline"
+        class="text-sm mb-2 font-semibold line-clamp-2"
+        :class="{ 'text-2xl line-clamp-3': featured }"
       >
         <h1>
           {{ article.title }}
         </h1>
       </NuxtLink>
 
-      <p class="description">
+      <p class="mb-4 line-clamp-2" :class="{ 'line-clamp-4': featured }">
         {{ article.description }}
       </p>
-      <time>
+      <time class="text-sm text-gray-500">
         {{ formatDate(article.date) }}
       </time>
     </div>
   </article>
 </template>
-
-<style scoped lang="ts">
-css({
-  article: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '{space.4}',
-    '&.featured': {
-      '@md': {
-        flexDirection: 'row',
-        gap: '{space.8}',
-      }
-    },
-    img: {
-      width: '100%',
-      aspectRatio: '16 / 9',
-      objectFit: 'cover',
-      borderRadius: '{radii.md}',
-    },
-    '.image': {
-      flex: 1,
-      div: {
-        position: 'absolute',
-        display: 'flex',
-        flexWrap: true,
-        gap: '{space.2}',
-        marginTop: '{space.2}',
-        marginLeft: '{space.2}',
-        span: {
-          padding: '{space.1}',
-          borderRadius: '{radii.sm}',
-          text: 'xs',
-          fontWeight: 700
-        }
-      }
-    },
-    '.content': {
-      display: 'flex',
-      flexDirection: 'column',
-      flex: 1,
-      '.headline': {
-        text: '2xl',
-        marginBottom: '{space.2}',
-        fontWeight: '{fontWeight.semibold}',
-        lineClamp: 2,
-        '.featured &&': {
-          text: '4xl',
-          lineClamp: 3,
-        },
-      },
-      '.description': {
-        marginBottom: '{space.4}',
-        lineClamp: 2,
-        '.featured &&': {
-          lineClamp: 4,
-        }
-      },
-      time: {
-        text: 'sm',
-        // TODO: add secondary color token
-        color: '{color.gray.500}',
-        '@dark': {
-          color: '{color.gray.500}',
-        }
-      }
-    },
-  }
-})
-</style>

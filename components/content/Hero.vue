@@ -8,23 +8,19 @@ defineProps({
     type: String,
     default: 'Hero Image',
   },
-  imagePosition: {
-    type: String,
-    default: 'right',
-  },
 })
 </script>
 
 <template>
-  <section class="hero">
-    <div class="layout">
+  <section>
+    <div class="grid grid-cols-1 gap-1">
       <div class="content">
-        <div class="title">
+        <div class="text-4xl font-bold">
           <ContentSlot :use="$slots.title" unwrap="p">
             Hero title
           </ContentSlot>
         </div>
-        <div class="description">
+        <div class="mt-2 text-xl">
           <ContentSlot :use="$slots.description" unwrap="p">
             Hero description
           </ContentSlot>
@@ -32,46 +28,10 @@ defineProps({
       </div>
       <NuxtImg
         v-if="image"
-        :class="imagePosition"
+        class="w-full aspect-video object-cover rounded-md"
         :src="image"
         :alt="imageAlt"
-        :width="16"
-        :height="9"
       />
     </div>
   </section>
 </template>
-
-<style scoped lang="ts">
-css({
-  '.hero': {
-    '.layout': {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
-      gap: '{space.8}',
-      '@lg': {
-        gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-      },
-      '.title': {
-        fontSize: '{text.4xl.fontSize}',
-        lineHeight: '{text.4xl.lineHeight}',
-        fontWeight: '{fontWeight.bold}',
-      },
-      '.description': {
-        marginTop: '{space.3}',
-        fontSize: '{text.xl.fontSize}',
-        lineHeight: '{text.xl.lineHeight}',
-      },
-      img: {
-        width: '100%',
-        aspectRatio: '16 / 9',
-        objectFit: 'cover',
-        borderRadius: '{radii.md}',
-        '&.left': {
-          order: -1
-        }
-      },
-    }
-  }
-})
-</style>
