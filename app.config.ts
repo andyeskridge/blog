@@ -1,11 +1,7 @@
 export default defineAppConfig({
   socials: {
     twitter: 'andyeskridge',
-    linkedin: {
-      icon: 'uil:linkedin',
-      label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/andyeskridge/',
-    },
+    linkedin: 'andyeskridge',
     github: 'andyeskridge',
   },
   nuxtIcon: {

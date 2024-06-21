@@ -25,6 +25,12 @@ export default defineNuxtSchema({
        * @studioIcon simple-icons:mastodon
        * */
       mastodon: '',
+      /**
+       * LinkedIn username
+       * @example 'nuxt-framework'
+       * @studioIcon simple-icons:linkedin
+       * */
+      linkedin: '',
     },
   },
 })
