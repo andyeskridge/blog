@@ -36,8 +36,8 @@ export default defineNuxtConfig({
     },
     enabled: true,
   },
-
   hub: {
     cache: true,
+    analytics: true,
   },
 })
