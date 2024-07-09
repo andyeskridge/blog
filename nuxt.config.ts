@@ -1,5 +1,6 @@
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
+  future: { compatibilityVersion: 4 },
   modules: [
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
@@ -24,11 +25,6 @@ export default defineNuxtConfig({
       },
     },
 
-  },
-  nitro: {
-    experimental: {
-      openAPI: true,
-    },
   },
   devtools: {
     timeline: {
