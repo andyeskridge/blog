@@ -1,6 +1,7 @@
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   future: { compatibilityVersion: 4 },
+
   modules: [
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
@@ -9,11 +10,14 @@ export default defineNuxtConfig({
     '@nuxthq/studio',
     '@nuxthub/core',
     '@nuxt/image',
+    '@nuxt/eslint',
   ],
+
   // https://color-mode.nuxtjs.org
   colorMode: {
     classSuffix: '',
   },
+
   // https://content.nuxtjs.org
   content: {
     documentDriven: true,
@@ -26,14 +30,18 @@ export default defineNuxtConfig({
     },
 
   },
+
   devtools: {
     timeline: {
       enabled: true,
     },
     enabled: true,
   },
+
   hub: {
     cache: true,
     analytics: true,
   },
+
+  compatibilityDate: '2024-07-09',
 })
