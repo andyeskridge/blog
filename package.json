@@ -29,7 +29,7 @@
     "@nuxt/image": "^1.7.0",
     "@nuxt/kit": "^3.12.3",
     "@nuxthub/core": "^0.7.1",
-    "@types/node": "^20.14.10",
+    "@types/node": "^20.14.11",
     "eslint": "^9.7.0",
     "nuxt": "^3.12.3",
     "typescript": "^5.5.3",
